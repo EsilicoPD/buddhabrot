@@ -107,7 +107,14 @@ function Loop()
         let Y = B;
         for(let i = iterations; isFinite(X)&&i-->0;)
         {
-            [X, Y] = [2*X*Y + A, Y*Y - X*X + B];
+            let r = Math.sqrt(X*X + Y*Y);
+            let theta = Math.atan2(Y, X);
+            r = Math.pow(r, power);
+            theta *= power;
+
+            X = r * Math.cos(theta) + A;
+            Y = r * Math.sin(theta) + B;
+
             P.push({ X, Y });
         }
         
